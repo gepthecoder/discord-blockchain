@@ -1,0 +1,7 @@
+{
+  "name": "g3p-gun-node",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "gepthecoder",
+  "license": "MIT"
+}
