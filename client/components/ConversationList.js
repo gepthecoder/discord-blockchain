@@ -55,11 +55,11 @@ const ConversationList = () => {
             <div className={styles.elementsContainer}>
             <div className={styles.svgContainer}>
                 <Image
-                height={25}
-                width={25}
-                src={friends}
-                className={styles.svg}
-                alt='friends'
+                    height={25}
+                    width={25}
+                    src={friends}
+                    className={styles.svg}
+                    alt='friends'
                 />
             </div>
             <p>Friends</p>
@@ -67,11 +67,11 @@ const ConversationList = () => {
             <div className={styles.elementsContainer}>
             <div className={styles.svgContainer}>
                 <Image
-                height={25}
-                width={25}
-                src={nitro}
-                className={styles.svg}
-                alt='nitro'
+                    height={25}
+                    width={25}
+                    src={nitro}
+                    className={styles.svg}
+                    alt='nitro'
                 />
             </div>
             <p>Nitro</p>
