@@ -4,7 +4,7 @@ import Gun from 'gun'
 
 export const DiscordContext = createContext()
 
-const gun = Gun(['https://discord-dapp.herokuapp.com/'])
+const gun = Gun(['https://discord-dapp.herokuapp.com/gun'])
 
 const initialState = { messages: [] }
 
@@ -109,7 +109,7 @@ export const DiscordProvider = ({ children }) => {
         })
         if (addressArray.length > 0) {
             setCurrentAccount(addressArray[0])
-            createUserAccount()
+            createUserAccount(addressArray[0])
         } else {}
         } catch (error) {
             console.error(error)
