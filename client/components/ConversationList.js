@@ -10,39 +10,21 @@ import DmCard from './DmCard'
 import friends from '../assets/icons/friends.svg'
 import nitro from '../assets/icons/nitro.svg'
 
-import avatar1 from '../assets/avatar-1.webp'
-import avatar2 from '../assets/avatar-2.png'
-import avatar3 from '../assets/avatar-3.webp'
-import avatar4 from '../assets/avatar-4.webp'
-
-
-const dummyDMs = [
-    {
-        id: 1,
-        name: '0xB3N',
-        avatar: avatar1,
-    },
-    {
-        id: 2,
-        name: '0xT1M',
-        avatar: avatar2,
-    },
-    {
-        id: 3,
-        name: '0xGoJc',
-        avatar: avatar3,
-    },
-    {
-        id: 4,
-        name: '0xW1dE',
-        avatar: avatar4,
-    },
-]
-
-
 const ConversationList = () => {
 
-    const [dms, setDms] = useState(dummyDMs)
+    const [dms, setDms] = useState([])
+
+    useEffect(() => {
+        fetchDirectMessages()
+    }, [])
+
+    const fetchDirectMessages = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/getdms`)
+      
+            setDms(await response.json())
+        } catch (error) { console.error(error) }
+    }
 
     return (
         <div className={styles.conversations}>
