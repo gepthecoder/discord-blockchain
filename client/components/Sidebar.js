@@ -1,6 +1,7 @@
 import styles from '../styles/sidebar.module.css'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import RoomAvatar from './RoomAvatar'
 
 import avatar1 from '../assets/avatar-1.webp'
 import avatar2 from '../assets/avatar-2.png'
@@ -36,7 +37,16 @@ const Sidebar = () => {
 
     return (
         <div className={styles.wrapper}>
-            Sidebar
+            {
+                channels.map((channel, index) => (
+                    <RoomAvatar 
+                        key={index}
+                        id={channel.roomId}
+                        avatar={channel.avatar}
+                        name={channel.roomName}
+                    />
+                ))
+            }
         </div>
     )
 }
