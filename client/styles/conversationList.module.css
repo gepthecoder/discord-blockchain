@@ -3,6 +3,7 @@
     overflow-y: scroll;
     position: relative;
     background: #2f3136;
+    overflow: hidden;
   }
   
 .conversationsContainer {
