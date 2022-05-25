@@ -32,19 +32,9 @@ export const DiscordProvider = ({ children }) => {
         checkIfWalletIsConnected()
     }, [])
 
-    useEffect(async () => {
+    useEffect(() => {
         if (!currentAccount) return
-
-        try {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/getCurrentUserData?account=${currentAccount}`,
-        )
-
-        const data = await response.json()
-        setCurrentUser(data)
-        } catch (error) {
-        console.error(error)
-        }
+        fetchCurrentUserData()
     }, [currentAccount])
 
     useEffect(() => {
@@ -126,6 +116,19 @@ export const DiscordProvider = ({ children }) => {
         }
     }
 
+    const fetchCurrentUserData = async () => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/getCurrentUserData?account=${currentAccount}`,
+            )
+    
+            const data = await response.json()
+            setCurrentUser(data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const connectWallet = async () => {
         if (!window.ethereum) return
         try {
@@ -144,18 +147,18 @@ export const DiscordProvider = ({ children }) => {
 
     return (
         <DiscordContext.Provider
-        value={{
-            currentAccount,
-            roomName,
-            setRoomName,
-            placeholder,
-            messageText,
-            setMessageText,
-            state,
-            gun,
-            connectWallet,
-            currentUser,
-        }}
+            value={{
+                currentAccount,
+                roomName,
+                setRoomName,
+                placeholder,
+                messageText,
+                setMessageText,
+                state,
+                gun,
+                connectWallet,
+                currentUser,
+            }}
         >
         {children}
         </DiscordContext.Provider>
