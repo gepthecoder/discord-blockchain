@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "author": "gepthecoder",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "gun": "^0.2020.1237"
+  }
 }
