@@ -37,6 +37,7 @@ export const DiscordProvider = ({ children }) => {
         fetchCurrentUserData()
     }, [currentAccount])
 
+    /* Query the room that was clicked and set roomName */
     useEffect(() => {
         setRoomName(router.query.name)
         dispatch({ type: 'clear', data: {} })
@@ -47,20 +48,19 @@ export const DiscordProvider = ({ children }) => {
 
     const getMessages = () => {
         const _name = router.query.name
-        const _roomId = router.query.id
         const messagesRef = gun.get(_name)
 
         messagesRef.map().once(message => {
-        dispatch({
-            type: 'add',
-            data: {
-            sender: message.sender,
-            content: message.content,
-            avatar: message.avatar,
-            createdAt: message.createdAt,
-            messageId: message.messageId,
-            },
-        })
+            dispatch({
+                type: 'add',
+                data: {
+                    sender: message.sender,
+                    content: message.content,
+                    avatar: message.avatar,
+                    createdAt: message.createdAt,
+                    messageId: message.messageId,
+                },
+            })
         })
     }
 
